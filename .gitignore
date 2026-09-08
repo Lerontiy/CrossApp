@@ -1,4 +1,4 @@
 *.docx
 .vscode
-__pycache__
 *.pdf
+*.exe
