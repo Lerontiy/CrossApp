@@ -12,7 +12,7 @@ var appInfo = new {
 
 if (args.Contains("--json"))
 {
-    string jsonString = JsonSerializer.Serialize(appInfo);
+    string jsonString = JsonSerializer.Serialize(appInfo, new JsonSerializerOptions { Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping });
     Console.WriteLine(jsonString);
 }
 else
