@@ -1,6 +1,8 @@
 ﻿using System.Runtime.InteropServices;
 using System.Text.Json;
 
+Console.OutputEncoding = System.Text.Encoding.UTF8;
+
 var appInfo = new {
     App = "CrossApp",
     Student = "Назаренко Олександр",
