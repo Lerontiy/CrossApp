@@ -9,7 +9,13 @@ var appInfo = new {
     Group = "ФЕІ-33",
     OS = RuntimeInformation.OSDescription,
     DotNetVersion = Environment.Version.ToString(),
-    Domain = "Бібліотека"
+    Domain = "Бібліотека",
+    Runtime = RuntimeInformation.FrameworkDescription,
+    Enviroment = Environment.OSVersion.ToString(),
+    Architecture = RuntimeInformation.ProcessArchitecture.ToString(),
+    BaseDirectory = AppContext.BaseDirectory,
+    CurrentDirectory = Environment.CurrentDirectory,
+    PredmentaOblast = "Бібліотека",
 };
 
 if (args.Contains("--json"))
