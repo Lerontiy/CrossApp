@@ -25,4 +25,4 @@ src\Cli\bin\Release\net10.0\win-x64\Cli.exe
 
 
 ## Команда для запуску в докер контейнері
-docker run --rm -v ${PWD}:/src -w /src mcr.microsoft.com/dotnet/sdk:10.0 dotnet run --project src/Cli --json
+docker run --rm -v ${PWD}:/src -w /src mcr.microsoft.com/dotnet/runtime-deps:10.0 ./src/Cli/bin/Release/net10.0/linux-x64/publish/Cli

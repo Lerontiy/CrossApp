@@ -1,25 +1,32 @@
 using System.Runtime.InteropServices; 
- 
+
 namespace Core; // корінний namespace = ім'я проєкту Core 
- 
+
 public sealed record EnvironmentReport( 
     string OsDescription, 
     string FrameworkDescription, 
     string ProcessArchitecture, 
     string DetectedRid, 
     string ReportedRid, 
-    string BaseDirectory
+    string BaseDirectory,
+    string BuildNote
 );
  
 public static class EnvironmentInfo
 { 
+    #if NET8_0 
+        const string BuildNote = "збірка під net8.0"; 
+    #else 
+        const string BuildNote = "збірка під інший net"; 
+    #endif 
     public static EnvironmentReport Collect() => new(
         RuntimeInformation.OSDescription, 
         RuntimeInformation.FrameworkDescription, 
         RuntimeInformation.ProcessArchitecture.ToString(), 
         DetectRid(), 
         RuntimeInformation.RuntimeIdentifier, 
-        AppContext.BaseDirectory
+        AppContext.BaseDirectory,
+        BuildNote
     );
 
     // Ручне визначення RID: показує, з чого складається рядок win-x64.  private static string DetectRid() 
