@@ -34,12 +34,18 @@ public static class ProductCsvImporter
         string[] parts = line.Split(Separator, StringSplitOptions.TrimEntries); 
         return parts switch 
         { 
-            { Length: < 4 } => new ParseFailed($"очікую 4 колонок, отримав {parts.Length}"),  [_, "", _, _] or [_, _, "", _] 
-            => new ParseFailed("SKU або назва порожні"), 
-            [_, _, _, var year] when !int.TryParse(year, out int y) || y < 1450 || y > DateTime.Now.Year  
-            => new ParseFailed($"рік '{year}' поза допустимими межами") ,  [var Id, var Isbn, var Title, var Year] 
-            => new ParseOk(new BookDto(Id, Isbn, Title, int.Parse(Year))),  _ => new ParseFailed($"занадто багато колонок: {parts.Length}")  
-        }; 
+            { Length: < 5 } => new ParseFailed($"очікую 5 колонок, отримав {parts.Length}"),  
+            
+            [_, "", _, _, _] or [_, _, "", _, _] => new ParseFailed("SKU або назва порожні"), 
+            
+            [_, _, _, var year, _] when !int.TryParse(year, out int y) || y < 1450 || y > DateTime.Now.Year  
+            => new ParseFailed($"рік '{year}' не є валідним числом або поза межами"),  
+            
+            [var id, var isbn, var title, var year, var author] 
+            => new ParseOk(new BookDto(id, isbn, title, int.Parse(year), author)),  
+            
+            _ => new ParseFailed($"занадто багато колонок: {parts.Length}")  
+        };
     } 
     private abstract record ParseOutcome; 
     private sealed record ParseOk(BookDto Value) : ParseOutcome; 
