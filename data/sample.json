@@ -8,8 +8,10 @@
   { "Type": "B", "Id": "7", "Isbn": "978-1449373320", "Title": "Designing Data-Intensive Applications", "Year": 2017, "Author": null },
   { "Type": "B", "Id": "8", "Isbn": "978-0134685991", "Title": "Effective Java", "Year": 2017, "Author": "Joshua Bloch" },
   { "Type": "B", "Id": "9", "Isbn": "978-0137081073", "Title": "The Clean Coder", "Year": 2011, "Author": null },
-
   { "Type": "R", "Id": "101", "Name": "Іван Франко" },
   { "Type": "R", "Id": "102", "Name": "Леся Українка" },
-  { "Type": "R", "Id": "103", "Name": "Тарас Шевченко" }
+  { "Type": "R", "Id": "103", "Name": "Тарас Шевченко" },
+  { "Type": "B", "Id": "11", "Isbn": "978-0000000001", "Title": null, "Year": null, "Author": null },
+  { "Type": "B", "Id": "12", "Isbn": "978-0000000002", "Title": "Історія Риму", "Year": "Дві тисячі третій", "Author": "Тіт Лівій" },
+  { "Type": "X", "Id": "999", "RawData": "Зламаний рядок,з невідомим,префіксом" }
 ]

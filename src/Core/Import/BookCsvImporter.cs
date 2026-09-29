@@ -20,6 +20,9 @@ public static class ProductCsvImporter
             if (string.IsNullOrWhiteSpace(line) || line.StartsWith('#')) 
                 continue; 
                 
+            if (number == 1 && line.StartsWith("Type", StringComparison.OrdinalIgnoreCase))  
+                continue; 
+                
             switch (ParseLine(line)) 
             { 
                 case ParseOkBook okB: 
