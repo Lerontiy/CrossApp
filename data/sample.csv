@@ -1,14 +1,16 @@
-Id,Isbn,Title,Year,Author
-1,978-0132350884,Clean Code,2008,
-2,978-0201616224,The Pragmatic Programmer,1999,Andrew Hunt & David Thomas
-3,978-0131103627,The C Programming Language,1988,
-4,978-1449331818,Learning C#,2012,Jesse Liberty
-5,978-1491951515,C# 9.0 in a Nutshell,2021,
-6,978-0321125217,Domain-Driven Design,2003,Eric Evans
-7,978-1449373320,Designing Data-Intensive Applications,2017,
-8,978-0134685991,Effective Java,2017,Joshua Bloch
-9,978-0137081073,The Clean Coder,2011,
-10,978-1492051213,Pro C# 9,2020,Andrew Troelsen
-11,978-0000000001,,,
-12,978-0000000002,Історія Риму,Дві тисячі третій,Тіт Лівій
-13,978-0000000003,,2023,
+Type,Id,Isbn,Title,Year,Author
+B,1,978-0132350884,Clean Code,2008,
+B,2,978-0201616224,The Pragmatic Programmer,1999,Andrew Hunt & David Thomas
+B,3,978-0131103627,The C Programming Language,1988,
+B,4,978-1449331818,Learning C#,2012,Jesse Liberty
+B,5,978-1491951515,C# 9.0 in a Nutshell,2021,
+B,6,978-0321125217,Domain-Driven Design,2003,Eric Evans
+B,7,978-1449373320,Designing Data-Intensive Applications,2017,
+B,8,978-0134685991,Effective Java,2017,Joshua Bloch
+B,9,978-0137081073,The Clean Coder,2011,
+R,101,Іван Франко
+R,102,Леся Українка
+R,103,Тарас Шевченко
+B,11,978-0000000001,,,
+B,12,978-0000000002,Історія Риму,Дві тисячі третій,Тіт Лівій
+X,999,Зламаний рядок,з невідомим,префіксом

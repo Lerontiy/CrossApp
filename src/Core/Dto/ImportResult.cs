@@ -1,3 +1,7 @@
 namespace Core.Dto; 
 
-public sealed record ImportResult<T>(IReadOnlyList<T> Items, IReadOnlyList<string>  Errors); 
+public sealed record ImportResult(
+    IReadOnlyList<BookDto> Books, 
+    IReadOnlyList<ReaderDto> Readers, 
+    IReadOnlyList<string> Errors
+);
