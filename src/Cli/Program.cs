@@ -1,5 +1,8 @@
 ﻿using Core.Dto; 
 using Core.Import;
+using System;
+using System.IO;
+using System.Linq;
 
 string path = args.Length > 0 ? args[0] : Path.Combine("data", "sample.csv"); 
 if (!File.Exists(path)) 
@@ -8,14 +11,8 @@ if (!File.Exists(path))
     return 1; 
 } 
 
-string extension = Path.GetExtension(path).ToLowerInvariant();
-
-ImportResult result = extension switch
-{
-    ".csv" => ProductCsvImporter.Load(path),
-    ".json" => BookJsonImporter.Load(path),
-    _ => new ImportResult([], [], [$"Непідтримуваний формат файлу: {extension}"])
-};
+var importService = new ImportService();
+ImportResult result = importService.ImportFile(path);
 
 Console.WriteLine($"Завантажено книг: {result.Books.Count}"); 
 foreach (BookDto b in result.Books.Take(5)) 
@@ -32,11 +29,7 @@ if (result.Errors.Count > 0)
         Console.WriteLine($" ! {e}"); 
 } 
 
-int accepted = result.Books.Count + result.Readers.Count;
-int skipped = result.Errors.Count;
-int total = accepted + skipped;
-double errorPercent = total == 0 ? 0 : (double)skipped / total * 100;
-
-Console.WriteLine($"\n[Статистика] Усього: {total} | Прийнято: {accepted} | Пропущено: {skipped} | Помилок: {errorPercent:F1}%");
+var stats = ImportStatistics.Create(result);
+Console.WriteLine($"\n[Статистика] Усього: {stats.Total} | Прийнято: {stats.Accepted} | Пропущено: {stats.Skipped} | Помилок: {stats.ErrorPercent:F1}%");
 
 return 0;

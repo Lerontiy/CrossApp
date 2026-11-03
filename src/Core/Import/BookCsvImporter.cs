@@ -1,7 +1,7 @@
 using Core.Dto; 
 namespace Core.Import; 
 
-public static class ProductCsvImporter 
+public static class BookCsvImporter 
 { 
     private const char Separator = ','; 
     
