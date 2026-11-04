@@ -36,10 +36,16 @@ Console.WriteLine($"\n[Статистика] Усього: {stats.Total} | Пр�
 Console.WriteLine("\n=== Доменна модель: успішний сценарій ===");
 BookCopy copy = BookCopy.Create("BC-001", "978-617-000-001-1");
 Console.WriteLine(copy);
-copy.Issue();
+Loan loan = Loan.Open("L-001", copy, "R-101", new DateOnly(2026, 11, 4));
 Console.WriteLine(copy);
-copy.ReturnCopy();
+Console.WriteLine(loan);
+
+LoanDto loanSnapshot = loan.ToDto();
+Console.WriteLine($"Відновлено позику з DTO: {Loan.FromDto(loanSnapshot)}");
+
+loan.Close(copy, new DateOnly(2026, 11, 5));
 Console.WriteLine(copy);
+Console.WriteLine(loan);
 
 BookCopyDto snapshot = copy.ToDto();
 Console.WriteLine($"Відновлено з DTO: {BookCopy.FromDto(snapshot)}");
@@ -47,6 +53,7 @@ Console.WriteLine($"Відновлено з DTO: {BookCopy.FromDto(snapshot)}");
 Console.WriteLine("\n=== Доменна модель: порушення інваріантів ===");
 copy.Issue();
 TryDo("повторна видача", copy.Issue);
+TryDo("повторне відкриття позики", () => Loan.Open("L-002", copy, "R-102", new DateOnly(2026, 11, 6)));
 TryDo("порожній ISBN", () => BookCopy.Create("BC-002", " "));
 TryDo("повернення невиданого примірника", () =>
     BookCopy.Create("BC-003", "978-617-000-003-5").ReturnCopy());
